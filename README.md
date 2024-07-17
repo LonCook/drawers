@@ -50,11 +50,11 @@ The panel naviagtion script requires a list of slide panel names. Hard coding th
     /*       __________________________________________________
 
     NAME:	    DrawerPanels ( SlideControlGroupName )
-    PURPOSE:Returns error code corresponding to a user canceling an action.
+    PURPOSE:    Returns error code corresponding to a user canceling an action.
     PARAMETERS:
-		SlideControlGroupName : name of group     containing slide control object
-    EXAMPLE:Given a group named "drawer_left" containing a slide control object, with panels named "panel_01", "panel_02", and "panel_03".
-		DrawerPanels ( "drawer_left" ) = "panel_01¶panel_02¶panel_03"
+		    SlideControlGroupName : name of group containing slide control object
+    EXAMPLE:    Given a group named "drawer_left" containing a slide control object, with panels named "panel_01", "panel_02", and "panel_03".
+		    DrawerPanels ( "drawer_left" ) = "panel_01¶panel_02¶panel_03"
     HISTORY:
 	    14 Jul 2025, 22hr51PST, Lon Cook : created	
     */
@@ -63,7 +63,7 @@ The panel naviagtion script requires a list of slide panel names. Hard coding th
 	// I N I T I A L I Z E   V A R I A B L E S
 	  _drawerGroupName		= SlideControlGroupName
 	; _objectAttribute		= GetLayoutObjectAttribute ( _drawerGroupName ; "containedObjects" )
-	; _string			= ""
+	; _string		= ""
 	; _string_withTags		= ""
 	; _closeTag_count		= PatternCount ( _objectAttribute ; ">" )
 	]; 
@@ -72,11 +72,11 @@ The panel naviagtion script requires a list of slide panel names. Hard coding th
 	;[ 
 	// L O G I C
 	   _string			= TextBetween (
-	  						  _objectAttribute
-							; "<"
-							; ">"
-							; 1
-							)
+	  					  _objectAttribute
+						; "<"
+						; ">"
+						; 1
+						)
 	; _string_withTags		= "<" & _string & ">"
 	; _objectAttribute		= Substitute ( _objectAttribute ; _string_withTags ; "" )
 	; _closeTag_count		= PatternCount ( _objectAttribute ; ">" )
