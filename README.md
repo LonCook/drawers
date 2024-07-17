@@ -42,18 +42,21 @@ The second panel represents the open drawer, and will conveniently slide in from
 Left margin drawers present the complication of sliding in from the wrong direction; from the right. To address this, a third panel, another "closed" panel is added. On initially landing on the layout, the first panel is shown by default. If the open button is clicked, we navigate the user to the third panel, before proceeding to the second, thus the "open" panel sliding in from the left margin.
 
 ### Modality
+The drawer opening and closing script sets a global memory variable which may be employed in a visibility calculation on a "modality curtain". An example is provided with the right drawer. A button object is again employed to prevent user click-through.
 
 ### DrawerPanels ( ) Custom Function
+The panel naviagtion script requires a list of slide panel names. Hard coding these into the script parameter would be onerous for code maintainence, and simply too fragile. By containing the slide control object in its own named group, we can then employ a custom function to derive the object names of the contained panels. The then only need to ensure that the object name of the group is correctly passed. All other objects can be freely renamed, and the function is portable.
+
     /*       __________________________________________________
 
-    NAME:	DrawerPanels ( SlideControlGroupName )
-    PURPOSE:	Returns error code corresponding to      a user canceling an action.
+    NAME:	    DrawerPanels ( SlideControlGroupName )
+    PURPOSE:	Returns error code corresponding to a user canceling an action.
     PARAMETERS:
 		SlideControlGroupName : name of group     containing slide control object
-    EXAMPLE:	given a group named "drawer_left" containing a slide control object, with panels named "panel_01", "panel_02", and "panel_03".
+    EXAMPLE:	Given a group named "drawer_left" containing a slide control object, with panels named "panel_01", "panel_02", and "panel_03".
 		DrawerPanels ( "drawer_left" ) = "panel_01¶panel_02¶panel_03"
     HISTORY:
-	14 Jul 2025, 22hr51PST, Lon Cook : created	
+	    14 Jul 2025, 22hr51PST, Lon Cook : created	
     */
 
     While ([ 
@@ -85,7 +88,7 @@ Left margin drawers present the complication of sliding in from the wrong direct
 
 
 ## Layout Object Visibility
-
+Its worth noting a design pattern employed in this file.
 ### Conditional Formatting
 
 ### Visibility Calculation
