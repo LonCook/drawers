@@ -63,7 +63,7 @@ The panel naviagtion script requires a list of slide panel names. Hard coding th
 	// I N I T I A L I Z E   V A R I A B L E S
 	  _drawerGroupName		= SlideControlGroupName
 	; _objectAttribute		= GetLayoutObjectAttribute ( _drawerGroupName ; "containedObjects" )
-	; _string		= ""
+	; _string		    = ""
 	; _string_withTags		= ""
 	; _closeTag_count		= PatternCount ( _objectAttribute ; ">" )
 	]; 
