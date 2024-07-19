@@ -88,8 +88,26 @@ The panel naviagtion script requires a list of slide panel names. Hard coding th
 
 
 ## Layout Object Visibility
-Its worth noting a design pattern employed in this file.
+Objects, like sliding drawers and popovers, can get lost on an interface, when not visible. We can do ourselves a favor and make these objects visible in Layout Mode. Underlying objects are not obscured, while remaining readily apparent themselves. The formatting applied here is a transparent cyan.
+
+<img src="./screens/concealed_objects.png" width="300">
+
 ### Conditional Formatting
+For objcets that need to be rendered on screen, but have transparent properties that could make them difficult to readily find in Layout Mode, conditional formating is your friend. Formatting can be applied to the object (example: semi-transparent cyan), with conditional formatting to render the object fully transparent when not in layout mode. That calculation is as follows:
+
+    Get ( WindowMode ) ≠ 4
+
+This also works well for leaving developer notes, only visible in Layout Mode.
+
+<img src="./screens/layout_notes.png" width="200">
 
 ### Visibility Calculation
-Also known as "Hide object when".
+For objects you dont want to render at all, but still be able to find in Layout Mode, we turn to the visibilty calculation; also known as "Hide object when".
+
+In this file, the navigation menu is driven by a popover object, which are ordinarily called by a button. Here we are opening the popover object via script. We want the popover, but dont need the button it's attached to. We still need to find the button, when in Layout Mode, so it's given the same formatting as objects hidden via conditional formatting.
+
+<img src="./screens/visibility_calculation.png" width="150">
+
+The visibility calculation is the same one employed in the conditional formatting:
+
+    Get ( WindowMode ) ≠ 4
